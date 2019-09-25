@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caofl.login.mapper.UserMapper">
+
+    <select id="selectById" resultType="com.caofl.login.bean.User">
+        select * from t_user where id=#{id}
+    </select>
+
+    <insert id="save" parameterType="com.caofl.login.bean.User"
+            useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+        insert into t_user(username, password) values (#{username}, #{password})
+    </insert>
+
+    <select id="findAll" resultType="com.caofl.login.bean.UserInfo">
+        select * from t_info
+    </select>
+
+    <select id="selectByName" resultType="com.caofl.login.bean.User">
+        select * from t_user where username=#{username}
+    </select>
+
+    <insert id="saveInfo" parameterType="com.caofl.login.bean.UserInfo"
+            useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+        insert into t_info(name, email, date, title,evaluate, state)
+        values (#{name}, #{email}, #{date}, #{title}, #{evaluate}, #{state})
+    </insert>
+
+    <update id="update">
+        update t_info set
+            name=#{name}, email=#{email}, date=#{date}, title=#{title}, evaluate=#{evaluate}, state=#{state}
+        where id=#{id}
+    </update>
+
+    <delete id="deleteById">
+        delete from t_info where id=#{id}
+    </delete>
+</mapper>

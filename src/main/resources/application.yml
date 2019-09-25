@@ -1,0 +1,32 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: login
+
+  datasource:
+    url: jdbc:postgresql://127.0.0.1:5432/postgres
+    username: postgres
+    password: 123456
+    driver-class-name: org.postgresql.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+  resources:
+    static-locations: classpath:/static/
+
+
+mybatis-plus:
+  mapper-locations: classpath*:com/caofl/login/mapper/**Mapper.xml
+  type-aliases-package: com.caofl.login.bean.*
+  global-config:
+    id-type: 0
+    db-column-underline: true
+    refresh-mapper: true
+
+
+logging:
+  level:
+    com:
+      caofl:
+        login:
+          mapper: debug
